@@ -8,21 +8,16 @@ int main() {
     int gd = DETECT, gm;
     initgraph(&gd, &gm, (char*)"");
 
-
-    // Triangle points
     float x1 = 40, y1 = 70;
     float x2 = 50, y2 = 50;
     float x3 = 30, y3 = 60;
 
-    // Pivot point
     float xr = 30, yr = 30;
-    // Angle in radians
     float angle = 45 * (3.14159 / 180);
 
     cout << "STEP 1: Translation to Origin\n";
     cout << "Subtract pivot point from each vertex\n\n";
 
-    // -------- STEP 1: TRANSLATION --------
     float x1t = x1 - xr, y1t = y1 - yr;
     float x2t = x2 - xr, y2t = y2 - yr;
     float x3t = x3 - xr, y3t = y3 - yr;
@@ -32,8 +27,6 @@ int main() {
     cout << "C(" << x3t << "," << y3t << ")\n\n";
 
     cout << "STEP 2: Rotation about Origin\n\n";
-
-    // -------- STEP 2: ROTATION --------
     float x1r = x1t * cos(angle) - y1t * sin(angle);
     float y1r = x1t * sin(angle) + y1t * cos(angle);
 
@@ -50,7 +43,6 @@ int main() {
 
     cout << "STEP 3: Translation Back to Pivot\n\n";
 
-    // -------- STEP 3: TRANSLATION BACK --------
     float x1f = x1r + xr, y1f = y1r + yr;
     float x2f = x2r + xr, y2f = y2r + yr;
     float x3f = x3r + xr, y3f = y3r + yr;
@@ -60,9 +52,8 @@ int main() {
     cout << "B'(" << x2f << "," << y2f << ")\n";
     cout << "C'(" << x3f << "," << y3f << ")\n";
 
-    // -------- GRAPHICS --------
     setcolor(WHITE);
-    circle(xr, yr, 3);  // Pivot point
+    circle(xr, yr, 3);  
 
     setcolor(YELLOW);
     line(x1, y1, x2, y2);
@@ -78,3 +69,4 @@ int main() {
     closegraph();
     return 0;
 }
+
